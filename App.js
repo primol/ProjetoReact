@@ -98,6 +98,8 @@ function DecksScreen({ user }) {
       };
       if (user) {
         loadLikes();
+      } else {
+        setLikeCounts({});
       }
     }, [user])
   );
@@ -233,7 +235,7 @@ function FavoriteDecksScreen({ user }) {
   );
 }
 
-function ProfileScreen({ setIsUserLoggedIn, user }) {
+function ProfileScreen({ setIsUserLoggedIn, setUser, user }) {
   const [registrationDate, setRegistrationDate] = useState(null);
 
   useEffect(() => {
@@ -260,6 +262,7 @@ function ProfileScreen({ setIsUserLoggedIn, user }) {
   async function logout() {
     await AsyncStorage.removeItem('user');
     setIsUserLoggedIn(false);
+    setUser(null);
   }
 
   return (
@@ -549,7 +552,7 @@ export default function App() {
             </Tab.Screen>
             <Tab.Screen name="Catálogo" component={CatalogScreen} />
             <Tab.Screen name="Perfil">
-              {props => <ProfileScreen {...props} setIsUserLoggedIn={setIsUserLoggedIn} user={user} />}
+              {props => <ProfileScreen {...props} setIsUserLoggedIn={setIsUserLoggedIn} setUser={setUser} user={user} />}
             </Tab.Screen>
           </>
         ) : (
