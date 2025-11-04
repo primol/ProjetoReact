@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Card } from 'react-native-paper';
+import CatalogScreen from './components/CatalogScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -519,6 +520,8 @@ export default function App() {
                 iconName = 'cards-outline';
               } else if (route.name === 'Favoritos') {
                 iconName = 'star-outline';
+              } else if (route.name === 'Catálogo') {
+                iconName = 'books-outline';
               } else if (route.name === 'Perfil') {
                 iconName = 'account-outline';
               } else if (route.name === 'Em Breve') {
@@ -544,10 +547,10 @@ export default function App() {
             <Tab.Screen name="Favoritos">
               {props => <FavoriteDecksScreen {...props} user={user} />}
             </Tab.Screen>
+            <Tab.Screen name="Catálogo" component={CatalogScreen} />
             <Tab.Screen name="Perfil">
               {props => <ProfileScreen {...props} setIsUserLoggedIn={setIsUserLoggedIn} user={user} />}
             </Tab.Screen>
-            <Tab.Screen name="Em Breve" component={EmptyScreen} />
           </>
         ) : (
           <>
