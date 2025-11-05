@@ -19,19 +19,18 @@ Aplicativo desenvolvido em **React Native (Expo)** que permite ao usuário visua
 ## 🧱 Estrutura de Pastas (Simplificada)
 
 📦 projeto
-├── assets/ # Ícones e imagens do aplicativo
-├── componentes/ # Telas e componentes
-│ ├── DecksScreen.js
-│ ├── FavoriteDecksScreen.js
-│ ├── ProfileScreen.js
-│ └── EmptyScreen.js
+├── assets/                  # Ícones e imagens do aplicativo
+├── componentes/             # Telas e componentes
+│   ├── DecksScreen.js
+│   ├── FavoriteDecksScreen.js
+│   ├── ProfileScreen.js
+│   └── EmptyScreen.js
 ├── data/
-│ └── decks.js # Dados dos decks disponíveis
-├── imagens_cartas/ # Cartas usadas no app
-├── App.js # Arquivo principal do app
+│   └── decks.js             # Dados dos decks disponíveis
+├── imagens_cartas/          # Cartas usadas no app
+├── App.js                   # Arquivo principal do app
 ├── package.json
 └── index.js
-
 
 
 ---
