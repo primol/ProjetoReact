@@ -4,6 +4,13 @@ Aplicativo desenvolvido em **React Native (Expo)** para visualizar decks popular
 
 ---
 
+## ▶️ Demonstração
+https://youtube.com/shorts/w4nKYZW-OU8?si=KESmfjRLmS1XlNiw
+
+
+---
+
+
 ## 🎯 Visão Geral
 
 O objetivo do aplicativo é facilitar a visualização de decks utilizados no Clash Royale, permitindo que o usuário salve seus decks preferidos, mantendo-os facilmente acessíveis.  
