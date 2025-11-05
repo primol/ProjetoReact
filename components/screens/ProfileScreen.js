@@ -1,9 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import {
   Text, View, StyleSheet, TouchableOpacity
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Haptics from 'expo-haptics'; // <-- IMPORTADO AQUI
 
 export default function ProfileScreen({ setIsUserLoggedIn, user }) {
   const [registrationDate, setRegistrationDate] = useState(null);
@@ -30,6 +30,7 @@ export default function ProfileScreen({ setIsUserLoggedIn, user }) {
   };
 
   function logout() {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium); // <-- VIBRA AQUI
     if (setIsUserLoggedIn) {
       setIsUserLoggedIn(false);
     }
@@ -74,11 +75,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonClashLogout: {
-    backgroundColor: '#8B0000', // Dark Red/Maroon logout button
+    backgroundColor: '#8B0000',
     padding: 12,
     borderRadius: 10,
     borderWidth: 2,
-    borderColor: '#FF4500', // Orange-Red border
+    borderColor: '#FF4500',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.4,
