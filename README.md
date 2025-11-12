@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📱 Top Decks
 
 Aplicativo desenvolvido em **React Native (Expo)** que permite ao usuário visualizar decks populares do Clash Royale, marcar decks como favoritos e navegar entre diferentes telas como Perfil e Lista de Decks.
@@ -72,3 +73,7 @@ Vá na tela Decks
 Clique no botão de favorito ⭐
 
 O deck aparecerá automaticamente na tela Favoritos
+=======
+# ProjetoReact
+Projeto React - Livre
+>>>>>>> 23947e78fbc44ed80401958f607ec0ce9afd8df0

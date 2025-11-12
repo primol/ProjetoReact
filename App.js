@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import {
   TextInput, Text, View, Button, StyleSheet, FlatList, TouchableOpacity, Image, ScrollView, Platform, Vibration
 } from 'react-native';
@@ -354,6 +355,31 @@ function DeckBuilderScreen({ user }) {
 }
 
 function LoginScreen({ setIsUserLoggedIn, setUser }) {
+=======
+
+import {
+  TextInput, Text, View, Button, StyleSheet, FlatList, TouchableOpacity, Image, ScrollView, Platform
+} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Card } from 'react-native-paper';
+
+const Tab = createBottomTabNavigator();
+
+
+const Stack = createStackNavigator();
+
+import DecksScreen from './components/screens/DecksScreen';
+import FavoriteDecksScreen from './components/screens/FavoriteDecksScreen';
+import ProfileScreen from './components/screens/ProfileScreen';
+import EmptyScreen from './components/screens/EmptyScreen';
+
+// ------------------- TELA DE LOGIN -------------------
+function LoginScreen({ navigation, setIsUserLoggedIn }) { // navigation added for potential future use
+>>>>>>> 23947e78fbc44ed80401958f607ec0ce9afd8df0
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
   const [loading, setLoading] = useState(false);
@@ -368,10 +394,16 @@ function LoginScreen({ setIsUserLoggedIn, setUser }) {
       const senhaArmazenada = await AsyncStorage.getItem(usuario);
       if (senhaArmazenada !== null) {
         if (senhaArmazenada === senha) {
+<<<<<<< HEAD
           await AsyncStorage.setItem('user', usuario);
           setUser(usuario);
           setIsUserLoggedIn(true);
           Vibration.vibrate();
+=======
+          if (setIsUserLoggedIn) {
+            setIsUserLoggedIn(true);
+          }
+>>>>>>> 23947e78fbc44ed80401958f607ec0ce9afd8df0
         } else {
           alert('Senha incorreta!');
         }
@@ -421,6 +453,10 @@ function LoginScreen({ setIsUserLoggedIn, setUser }) {
   );
 }
 
+<<<<<<< HEAD
+=======
+// ------------------- TELA  CADASTRO 
+>>>>>>> 23947e78fbc44ed80401958f607ec0ce9afd8df0
 function Cadastro() {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
@@ -432,8 +468,11 @@ function Cadastro() {
     }
     try {
       await AsyncStorage.setItem(user, password);
+<<<<<<< HEAD
       const registrationDate = new Date().toISOString();
       await AsyncStorage.setItem(`${user}_registrationDate`, registrationDate);
+=======
+>>>>>>> 23947e78fbc44ed80401958f607ec0ce9afd8df0
       alert('Usuário criado .');
       setUser('');
       setPassword('');
@@ -481,6 +520,7 @@ function Cadastro() {
   );
 }
 
+<<<<<<< HEAD
 export default function App() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
@@ -531,11 +571,67 @@ export default function App() {
                 iconName = 'help-circle-outline';
               }
             } else {
+=======
+function AppTabs({ setIsUserLoggedIn }) {
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarActiveTintColor: '#FFD700', // Gold
+        tabBarInactiveTintColor: '#C0C0C0', // Silver
+        tabBarStyle: styles.tabBarClash,
+        tabBarLabelStyle: styles.tabBarLabelClash,
+        tabBarIcon: ({ color, size }) => {
+          let iconName;
+
+          if (route.name === 'Decks') {
+            iconName = 'cards-outline';
+          } else if (route.name === 'Favoritos') {
+            iconName = 'star-outline';
+          } else if (route.name === 'Perfil') {
+            iconName = 'account-outline';
+          } else if (route.name === 'Em Breve') {
+            iconName = 'help-circle-outline';
+          }
+
+          return <MaterialCommunityIcons name={iconName} color={color} size={size} />;
+        },
+      })}
+    >
+      <Tab.Screen name="Decks">
+        {props => <DecksScreen {...props} setIsUserLoggedIn={setIsUserLoggedIn} />}
+      </Tab.Screen>
+      <Tab.Screen name="Favoritos" component={FavoriteDecksScreen} />
+      <Tab.Screen name="Perfil" component={ProfileScreen} />
+      <Tab.Screen name="Em Breve" component={EmptyScreen} />
+    </Tab.Navigator>
+  );
+}
+
+export default function App() {
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  return (
+    <NavigationContainer>
+      {isUserLoggedIn ? (
+        <AppTabs setIsUserLoggedIn={setIsUserLoggedIn} />
+      ) : (
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            headerShown: false,
+            tabBarActiveTintColor: '#FFD700', // Gold
+            tabBarInactiveTintColor: '#C0C0C0', // Silver
+            tabBarStyle: styles.tabBarClash,
+            tabBarLabelStyle: styles.tabBarLabelClash,
+            tabBarIcon: ({ color, size }) => {
+              let iconName;
+
+>>>>>>> 23947e78fbc44ed80401958f607ec0ce9afd8df0
               if (route.name === 'Login') {
                 iconName = 'sword-cross'; // More game-like icon
               } else if (route.name === 'Criar Usuário') {
                 iconName = 'castle'; // Castle for creating a kingdom/account
               }
+<<<<<<< HEAD
             }
 
             return <MaterialCommunityIcons name={iconName} color={color} size={size} />;
@@ -571,10 +667,34 @@ export default function App() {
           </>
         )}
       </Tab.Navigator>
+=======
+
+              return <MaterialCommunityIcons name={iconName} color={color} size={size} />;
+            },
+          })}
+        >
+          <Tab.Screen
+            name="Login"
+            options={{ title: 'Arena de Batalha' }}
+          >
+            {props => <LoginScreen {...props} setIsUserLoggedIn={setIsUserLoggedIn} />}
+          </Tab.Screen>
+          <Tab.Screen
+            name="Criar Usuário"
+            component={Cadastro}
+            options={{ title: 'Novo Recruta' }}
+          />
+        </Tab.Navigator>
+      )}
+>>>>>>> 23947e78fbc44ed80401958f607ec0ce9afd8df0
     </NavigationContainer>
   );
 }
 
+<<<<<<< HEAD
+=======
+// ------------------- ESTILOS CLASH ROYALE -------------------
+>>>>>>> 23947e78fbc44ed80401958f607ec0ce9afd8df0
 const styles = StyleSheet.create({
   // --- Geral ---
   container: {
@@ -709,7 +829,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 3,
     elevation: 5,
+<<<<<<< HEAD
     marginTop: 20,
+=======
+>>>>>>> 23947e78fbc44ed80401958f607ec0ce9afd8df0
   },
   buttonText: {
     color: 'white',
@@ -812,9 +935,13 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginTop: 3,
   },
+<<<<<<< HEAD
   text: {
     color: 'white',
     fontSize: 18,
     marginBottom: 10,
   },
 });
+=======
+});
+>>>>>>> 23947e78fbc44ed80401958f607ec0ce9afd8df0
