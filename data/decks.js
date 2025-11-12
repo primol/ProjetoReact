@@ -18,7 +18,7 @@ export const decksMaisUsados = [
   {
     id: '2',
     nome: 'Deck Log Bait',
-    img: require('../imagens_cartas/barril.png'),
+    img: require('../imagens_cartas/princesa.png'),
     cartas: [
       { nome: 'Goblin Barrel', img: require('../imagens_cartas/barril.png') },
       { nome: 'Princess', img: require('../imagens_cartas/princesa.png') },

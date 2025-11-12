@@ -20,7 +20,7 @@ export default function DecksScreen({ navigation, setIsUserLoggedIn, user }) {
     <View style={styles.container}>
       {Platform.OS === 'web' && (
         <Image
-          source={require('../../imagens_cartas/coroa.png')}
+          source={require('../../imagens_cartas/coroa1.png')}
           style={{ width: 100, height: 100, alignSelf: 'center', marginVertical: 10 }}
         />
       )}
